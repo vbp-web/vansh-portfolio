@@ -3,30 +3,86 @@ import { Arrow, ClipReveal, Cursor, Lines, Magnetic, Reveal, Rule, SectionHead }
 import { previews } from './components/Previews'
 
 const NAV = ['Work', 'About', 'Skills', 'Experience', 'Contact']
-const EMAIL = 'hello@oneverce.com'
+const EMAIL = 'prajapativansh512@gmail.com'
 
-const PROJECTS = [
-  { n: '01', name: 'Travebie', cat: 'Travel Platform', year: '2025', tech: 'Next.js · Node · MongoDB', desc: 'A travel planning product that turns scattered itineraries, bookings and maps into one calm, searchable trip.', p: 'Travebie' },
-  { n: '02', name: 'parArc', cat: 'Computer Vision', year: '2025', tech: 'Python · OpenCV · React', desc: 'A vision pipeline that reads structure from images and renders it as clean, interactive output in the browser.', p: 'ParArc' },
-  { n: '03', name: 'Sportivo', cat: 'Sports Web App', year: '2024', tech: 'React · TypeScript · REST', desc: 'Live fixtures, team tracking and match analytics in a fast, typography-first interface.', p: 'Sportivo' },
-  { n: '04', name: 'Avirafit', cat: 'Fitness · Booking', year: '2024', tech: 'Next.js · PostgreSQL · Vercel', desc: 'A fitness brand site with class booking, memberships and progress tracking built into the experience.', p: 'Avirafit' },
-  { n: '05', name: 'Oneverce Solutions', cat: 'Studio · Founder', year: '2024 — Now', tech: 'Full-stack · AI · SaaS', desc: 'The digital product studio I founded, shipping websites, AI assistants and custom software for clients.', p: 'Oneverce' },
-] as const
+type ProjectItem = {
+  n: string
+  name: string
+  cat: string
+  year: string
+  tech: string
+  desc: string
+  p?: string
+  image?: string
+  fit?: 'cover' | 'contain'
+  link?: string
+}
+
+const PROJECTS: ProjectItem[] = [
+  { n: '01', name: 'Oneverce Solutions', cat: 'Studio · Founder', year: '2024 — Now', tech: 'Full-stack · AI · SaaS', desc: 'The digital product studio I founded, shipping websites, AI assistants and custom software for clients.', p: 'Oneverce', image: 'https://ik.imagekit.io/kn7nmib7f/Screenshot%202026-10-01%20102809.png', link: 'https://www.onevercesolution.in/' },
+  { n: '02', name: 'ParArc', cat: 'Architecture Portfolio', year: '2026', tech: 'React · TypeScript · Vite', desc: 'A modern, responsive portfolio website built for parArc Design Studio to showcase architecture projects, spatial designs, and creative work.', p: 'ParArc', image: 'https://ik.imagekit.io/kn7nmib7f/Screenshot%202026-09-19%20135100.png?updatedAt=1789807537906', link: 'https://www.pararcdesignstudio.in/' },
+  { n: '03', name: 'Travebie', cat: 'AI Travel Platform', year: '2026', tech: 'Next.js 16 · Gemini AI · Prisma · PostgreSQL', desc: 'An intelligent travel planning platform with Gemini AI, interactive Leaflet maps, and real-time itinerary organization.', p: 'Travebie', image: 'https://ik.imagekit.io/kn7nmib7f/Screenshot%202026-09-19%20134243.png?updatedAt=1789807538058', link: 'https://travebie.com/' },
+  { n: '04', name: 'Sportivo', cat: 'Sports Web App', year: '2025', tech: 'React · TypeScript · REST', desc: 'Live fixtures, team tracking and match analytics in a fast, typography-first interface.', p: 'Sportivo', image: 'https://ik.imagekit.io/kn7nmib7f/Screenshot%202026-09-19%20135231.png?updatedAt=1789807537315', link: 'https://sportivo-multi-sport-slot-booking.onrender.com/' },
+  { n: '05', name: 'DS Choco Bliss', cat: 'E-commerce', year: '2025', tech: 'Next.js · PostgreSQL · Vercel', desc: 'E-commerce platform for handcrafted chocolates featuring custom boxes, online ordering and seamless checkout.', p: 'Ds Choco Bliss', image: 'https://ik.imagekit.io/kn7nmib7f/Screenshot%202026-10-01%20101929.png', link: 'https://ds-choco.onrender.com/' },
+  { n: '06', name: 'Restaurant Management POS', cat: 'POS Software', year: '2025', tech: 'Nodejs · Express · PostgreSQL | Frontend: React | API: API Routes with Next.js', desc: 'POS Management software for restaurants.', p: 'Restaurant Management POS', image: 'https://ik.imagekit.io/kn7nmib7f/Screenshot%202026-09-19%20135210.png?updatedAt=1789807537528', link: 'https://vbp-web.github.io/Restaurant-POS/' },
+]
 
 const SKILLS = [
-  { t: 'Development', i: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'Node.js', 'Python'] },
-  { t: 'AI / ML', i: ['Machine Learning', 'Computer Vision', 'LLM APIs', 'AI Automation'] },
-  { t: 'Design', i: ['Figma', 'UI/UX', 'Design Systems', 'Motion Design'] },
-  { t: 'Tools', i: ['Git', 'GitHub', 'Vercel', 'MongoDB', 'PostgreSQL', 'REST APIs'] },
+  { t: 'Development', i: ['Next.js 16', 'React 19', 'TypeScript', 'Prisma', 'Tailwind CSS 4', 'Node.js', 'Python'] },
+  { t: 'AI / ML', i: ['Google Gemini', 'Vercel AI SDK', 'LLM APIs', 'Computer Vision', 'AI Automation'] },
+  { t: 'Design', i: ['Figma', 'UI/UX', 'Design Systems', 'Motion Design', 'Framer Motion'] },
+  { t: 'Tools & DB', i: ['PostgreSQL (Neon)', 'Prisma ORM', 'Upstash Redis', 'Git & GitHub', 'Vercel', 'Zod', 'REST APIs'] },
 ]
 
 const JOURNEY = [
-  { y: '2021', k: 'Education', t: 'Computer science foundations', d: 'Started with code, algorithms and a habit of building before being asked to.' },
-  { y: '2022', k: 'Projects', t: 'First shipped products', d: 'Travebie, Sportivo and Avirafit: learning full-stack end to end, in public.' },
-  { y: '2024', k: 'Oneverce', t: 'Founded Oneverce Solutions', d: 'Turned freelance momentum into a studio for products, automation and software.' },
-  { y: '2024', k: 'Client work', t: 'Websites, bookings, integrations', d: 'Delivering real systems for real businesses, from first call to launch.' },
-  { y: '2025', k: 'AI / ML', t: 'Vision, LLMs and automation', d: 'parArc and assistant workflows: making software that perceives and decides.' },
-  { y: 'Now', k: 'Current focus', t: 'Intelligent products at scale', d: 'Merging motion-rich interfaces with AI that does useful work.' },
+  {
+    y: '2024',
+    k: 'Learning',
+    t: 'Started learning by building',
+    d: 'Started seriously exploring web development, programming and software development — learning by turning ideas into working projects.',
+  },
+  {
+    y: '2025',
+    k: 'First Project',
+    t: 'Built my first real project',
+    d: 'Started the year by building DS Choco Bliss, putting my development skills into a real-world project for the first time.',
+  },
+  {
+    y: '2025 · Dec',
+    k: 'Software',
+    t: 'Restaurant POS system',
+    d: 'Built a restaurant-focused POS and management system with ordering, tables, billing, kitchen workflows and business operations.',
+  },
+  {
+    y: '2026 · Jan',
+    k: 'Sportivo',
+    t: 'Built a multi-sport booking platform',
+    d: 'Developed Sportivo to handle sports venue discovery, slot booking, payments and management through a complete digital system.',
+  },
+  {
+    y: '2026 · Mar',
+    k: 'Client Work',
+    t: 'Built for parArc Design Studio',
+    d: 'Worked with parArc Design Studio to transform their architecture website into a modern, responsive React experience while preserving its visual identity and interactions.',
+  },
+  {
+    y: '2026 · Jun',
+    k: 'Oneverce',
+    t: 'Launched Oneverce Solutions',
+    d: 'Turned my growing experience into Oneverce Solutions — a studio focused on websites, software, automation, AI and digital products.',
+  },
+  {
+    y: '2026 · Aug',
+    k: 'Travebie',
+    t: 'Built an AI-powered travel experience',
+    d: 'Worked on Travebie, combining travel planning, conversational AI, personalized recommendations and a modern booking experience.',
+  },
+  {
+    y: 'Now',
+    k: 'AI + Products',
+    t: 'Building what comes next',
+    d: 'Balancing college projects with personal products like Avirafit AI while continuing to explore AI, computer vision, automation and intelligent software.',
+  },
 ]
 
 const PROCESS = [
@@ -38,9 +94,9 @@ const PROCESS = [
 
 const SOCIALS = [
   { n: 'Email', h: `mailto:${EMAIL}`, v: EMAIL },
-  { n: 'LinkedIn', h: 'https://linkedin.com', v: 'in/vanshprajapati' },
-  { n: 'GitHub', h: 'https://github.com', v: '@vanshprajapati' },
-  { n: 'Instagram', h: 'https://instagram.com', v: '@vansh.builds' },
+  { n: 'LinkedIn', h: 'https://www.linkedin.com/in/vansh-prajapati-6a1749360', v: 'in/vansh-prajapati-6a1749360' },
+  { n: 'GitHub', h: 'https://github.com/vbp-web', v: '@vbp-web' },
+  { n: 'Instagram', h: 'https://www.instagram.com/oneverce/', v: '@oneverce' },
 ]
 
 function useScrollY() {
@@ -247,7 +303,11 @@ function Ticker() {
       <div className="flex w-max gap-6 sm:gap-10 whitespace-nowrap" style={{ animation: 'marquee 40s linear infinite' }}>
         {row.map((t, i) => (
           <span key={i} className="display flex items-center gap-6 sm:gap-10 text-2xl sm:text-3xl md:text-5xl text-mute">
-            {t} <span className="text-dim text-lg sm:text-2xl">✦</span>
+            {t}
+            <span className="relative flex h-3 w-3 sm:h-4 sm:w-4 items-center justify-center">
+              <span className="absolute h-full w-full rounded-full bg-fg/20 animate-ping opacity-60" />
+              <span className="h-2 w-2 sm:h-2.5 sm:w-2.5 rounded-full bg-fg/50 shadow-[0_0_12px_currentColor]" />
+            </span>
           </span>
         ))}
       </div>
@@ -284,6 +344,38 @@ function About() {
   )
 }
 
+function ProjectMedia({ project }: { project: ProjectItem }) {
+  const [imgError, setImgError] = useState(false)
+  const Preview = project.p && project.p in previews ? previews[project.p as keyof typeof previews] : null
+
+  useEffect(() => {
+    setImgError(false)
+  }, [project.image])
+
+  if (project.image && !imgError) {
+    return (
+      <div className="relative h-full w-full overflow-hidden bg-[#0c0d10] flex items-center justify-center">
+        <img
+          key={project.image}
+          src={project.image}
+          alt={project.name}
+          onError={() => {
+            console.warn(`Failed to load image for ${project.name}:`, project.image)
+            setImgError(true)
+          }}
+          className="h-full w-full object-contain object-center transition-transform duration-700 ease-out-expo group-hover:scale-[1.02]"
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div className="h-full w-full transition-transform duration-[1400ms] ease-out-expo group-hover:scale-[1.06]">
+      {Preview ? <Preview /> : <div className="flex h-full w-full items-center justify-center bg-panel text-dim font-mono text-xs">Preview coming soon</div>}
+    </div>
+  )
+}
+
 function Work() {
   return (
     <section id="work" className="px-5 py-20 sm:px-8 sm:py-24 md:px-10 md:pb-32">
@@ -291,11 +383,15 @@ function Work() {
       <Lines as="h2" className="display mb-12 sm:mb-20 mt-10 sm:mt-16 text-4xl sm:text-6xl md:text-[7.5vw]" lines={['Selected', 'work ↓']} />
       <div>
         {PROJECTS.map((p) => {
-          const Preview = previews[p.p]
           return (
             <Reveal key={p.n}>
-              <a href="#contact" className="group block border-t border-line py-8 sm:py-10 md:py-14">
-                <div className="grid gap-6 sm:gap-8 md:grid-cols-12 md:gap-10">
+              <a
+                href={p.link || '#contact'}
+                target={p.link?.startsWith('http') ? '_blank' : undefined}
+                rel={p.link?.startsWith('http') ? 'noopener noreferrer' : undefined}
+                className="group block border-t border-line py-8 sm:py-10 md:py-14"
+              >
+                <div className="grid gap-6 sm:gap-8 md:grid-cols-12 md:gap-10 items-center">
                   <div className="flex flex-col justify-between opacity-90 transition-opacity duration-700 md:opacity-70 group-hover:opacity-100 md:col-span-5">
                     <div>
                       <div className="label mb-4 sm:mb-6 flex gap-4 sm:gap-6">
@@ -315,12 +411,25 @@ function Work() {
                     </div>
                   </div>
                   <ClipReveal className="md:col-span-7">
-                    <div className="relative aspect-[16/10] overflow-hidden bg-panel text-fg rounded-sm border border-line/30">
-                      <div className="h-full w-full transition-transform duration-[1400ms] ease-out-expo group-hover:scale-[1.06]">
-                        <Preview />
+                    <div className="relative overflow-hidden rounded-lg border border-line/40 bg-panel shadow-2xl transition-all duration-500 group-hover:border-fg/50">
+                      {/* Browser mockup header */}
+                      <div className="flex items-center justify-between border-b border-line/30 bg-bg/75 px-3.5 py-2 sm:px-4 sm:py-2.5 backdrop-blur-md">
+                        <div className="flex items-center gap-1.5">
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#ff5f56]/90 inline-block" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#ffbd2e]/90 inline-block" />
+                          <span className="h-2.5 w-2.5 rounded-full bg-[#27c93f]/90 inline-block" />
+                        </div>
+                        <div className="flex items-center gap-2 font-mono text-[10px] sm:text-[11px] text-mute uppercase tracking-wider truncate max-w-[200px] sm:max-w-none">
+                          <span className="text-fg font-semibold">{p.name}</span>
+                          <span className="text-dim hidden sm:inline">·</span>
+                          <span className="hidden sm:inline">{p.cat}</span>
+                        </div>
+                        <span className="font-mono text-[10px] text-dim">Fig. {p.n}</span>
                       </div>
-                      <span className="label absolute left-3 top-3 sm:left-4 sm:top-4 text-[10px] sm:text-[11px]">Fig. {p.n}</span>
-                      <span className="label absolute bottom-3 right-3 sm:bottom-4 sm:right-4 text-[10px] sm:text-[11px]">{p.name}</span>
+                      {/* Full uncropped image container */}
+                      <div className="relative aspect-[1.95/1] w-full overflow-hidden bg-[#0c0d10]">
+                        <ProjectMedia project={p} />
+                      </div>
                     </div>
                   </ClipReveal>
                 </div>
@@ -496,7 +605,7 @@ function Footer() {
 }
 
 export default function App() {
-  const [theme, setTheme] = useState('dark')
+  const [theme, setTheme] = useState('light')
   const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     document.documentElement.dataset.theme = theme

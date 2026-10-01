@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState, type ReactNode, type ElementType, type Key } from 'react'
 
-export function useInView<T extends HTMLElement>(threshold = 0.2) {
+export function useInView<T extends HTMLElement>(threshold = 0.1) {
   const ref = useRef<T>(null)
   const [seen, setSeen] = useState(false)
   useEffect(() => {
@@ -13,7 +13,7 @@ export function useInView<T extends HTMLElement>(threshold = 0.2) {
           io.disconnect()
         }
       },
-      { threshold },
+      { threshold, rootMargin: '80px 0px' },
     )
     io.observe(el)
     return () => io.disconnect()
@@ -27,7 +27,7 @@ export function Lines({
   className = '',
   as: Tag = 'div',
   delay = 0,
-  threshold = 0.3,
+  threshold = 0.1,
 }: {
   lines: ReactNode[]
   className?: string
@@ -66,14 +66,14 @@ export function Reveal({
   delay?: number
   key?: Key
 }) {
-  const [ref, seen] = useInView<HTMLDivElement>(0.15)
+  const [ref, seen] = useInView<HTMLDivElement>(0.05)
   return (
     <div
       ref={ref}
-      className={`transition-all duration-[1400ms] ease-out-expo ${className}`}
+      className={`transition-all duration-[1200ms] ease-out-expo ${className}`}
       style={{
         opacity: seen ? 1 : 0,
-        transform: seen ? 'none' : 'translateY(32px)',
+        transform: seen ? 'none' : 'translateY(24px)',
         transitionDelay: `${delay}ms`,
       }}
     >
@@ -83,18 +83,21 @@ export function Reveal({
 }
 
 export function Rule({ className = '' }: { className?: string }) {
-  const [ref, seen] = useInView<HTMLDivElement>(0.5)
+  const [ref, seen] = useInView<HTMLDivElement>(0.2)
   return <div ref={ref} className={`rule ${seen ? 'in-view' : ''} ${className}`} />
 }
 
 /** Image/visual clip reveal */
 export function ClipReveal({ children, className = '' }: { children: ReactNode; className?: string }) {
-  const [ref, seen] = useInView<HTMLDivElement>(0.15)
+  const [ref, seen] = useInView<HTMLDivElement>(0.05)
   return (
     <div
       ref={ref}
-      className={`transition-[clip-path] duration-[1600ms] ease-out-expo ${className}`}
-      style={{ clipPath: seen ? 'inset(0 0 0 0)' : 'inset(100% 0 0 0)' }}
+      className={`transition-all duration-[1200ms] ease-out-expo ${className}`}
+      style={{
+        opacity: seen ? 1 : 0,
+        transform: seen ? 'none' : 'translateY(20px)',
+      }}
     >
       {children}
     </div>
